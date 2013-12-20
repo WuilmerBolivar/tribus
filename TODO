@@ -1,23 +1,20 @@
 * [] Issues:
         * [] #12 - Ocultar Correo electrónico en Perfil.
-        * [] #13 - Incorporar un Indice Alfabetico.
+        * [] #13 - Incorporar un Índice Alfabético.
         * [] #15 - Descripción de paquetes y comentarios.
         * [] #16 - Se muestran variables.
         * [] #17 - Palabras no traducidas en el correo.
-        * [] #18 - Target="_blank" en el footer.
-        * [] #20 - Barra al final del enlace.
         * [] #22 - Hacer un sprite para los svg's de la portada.
         * [] #23 - Agregar opensearch.
         * [] #24 - Leer tickets en Github a través de la API y ponerlos en la doc.
         * [] #25 - Hacer una rutina para limpiar SVG's con scour (optimize_svg).
         * [] #26 - Realizar pruebas unitarias.
-        * [] #27 - Separar los templates de los elementos de AngularJS ui-bootstrap.
-        * [] #28 - Arreglar acceso al panel de administración.
         * [] #29 - Traducir Tribus.
         * [] #35 - Utilizar plataforma de integración continua.
-        * [] #37 - Mejorar formulario de busqueda.
+        * [] #39 - Sistema de Cache ¿Redis o Memcached?.
+        * [] #40 - La estructura del diseño no cuenta con etiquetas semánticas.
 * [] Documentación:
-		* [] Documentación de tickets y funciones.
+        * [] Documentación de tickets y funciones.
         * [] Documentar clases y funciones. 
         * [] Completar la documentacion para desarrolladores.
         * [] i18n para la documentación automatizar el ciclo de compilación para cada idioma.
@@ -84,3 +81,8 @@ Realizados:
 * [HECHO] Revisar API.
 * [HECHO] Revisar CSS responsive.
 * [HECHO] Agregar "sponsors".
+* [HECHO] #18 - Target="_blank" en el footer.
+* [HECHO] #20 - Barra al final del enlace.
+* [HECHO] #27 - Separar los templates de los elementos de AngularJS ui-bootstrap.
+* [HECHO] #28 - Arreglar acceso al panel de administración.
+* [HECHO] #37 - Mejorar formulario de búsqueda.
