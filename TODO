@@ -17,7 +17,7 @@
         * [] #35 - Utilizar plataforma de integración continua.
         * [] #37 - Mejorar formulario de busqueda.
 * [] Documentación:
-		* [] Documentación de tickets y funciones.
+        * [] Documentación de tickets y funciones.
         * [] Documentar clases y funciones. 
         * [] Completar la documentacion para desarrolladores.
         * [] i18n para la documentación automatizar el ciclo de compilación para cada idioma.

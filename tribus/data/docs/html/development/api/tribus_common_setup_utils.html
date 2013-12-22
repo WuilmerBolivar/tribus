@@ -1,0 +1,293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>tribus.common.setup.utils &mdash; Tribus 0.1a1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1a1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="Tribus 0.1a1 documentation" href="../../index.html" />
+    <link rel="next" title="tribus.common.utils" href="tribus_common_utils.html" />
+    <link rel="prev" title="tribus.common.setup.message_extractors" href="tribus_common_setup_message_extractors.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="tribus_common_utils.html" title="tribus.common.utils"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="tribus_common_setup_message_extractors.html" title="tribus.common.setup.message_extractors"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">Tribus 0.1a1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <span class="target" id="module-tribus.common.setup.utils"></span><div class="section" id="tribus-common-setup-utils">
+<h1>tribus.common.setup.utils<a class="headerlink" href="#tribus-common-setup-utils" title="Permalink to this headline">¶</a></h1>
+<p>This module contains common functions to process the information needed
+by Setuptools/Distutils setup script.</p>
+<dl class="function">
+<dt id="tribus.common.setup.utils.get_classifiers">
+<tt class="descclassname">tribus.common.setup.utils.</tt><tt class="descname">get_classifiers</tt><big>(</big><em>filename=None</em><big>)</big><a class="headerlink" href="#tribus.common.setup.utils.get_classifiers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reads python classifiers from a file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> &#8211; a filename containing python classifiers
+(one classifier per line).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a list with each classifier.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">list</span></tt></td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span>New in version 0.1.</span></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="tribus.common.setup.utils.get_data_files">
+<tt class="descclassname">tribus.common.setup.utils.</tt><tt class="descname">get_data_files</tt><big>(</big><em>path=None</em>, <em>patterns=None</em>, <em>exclude_files=None</em><big>)</big><a class="headerlink" href="#tribus.common.setup.utils.get_data_files" title="Permalink to this definition">¶</a></dt>
+<dd><p>Procesess a list of patterns to get a list of files that should be put in
+a directory. This function helps the Tribus Maintainer to define a list of
+files to be installed in a certain system directory.</p>
+<p>For example, generated documentation (everything under <tt class="docutils literal"><span class="pre">tribus/data/docs/html</span></tt>
+after executing <tt class="docutils literal"><span class="pre">make</span> <span class="pre">build_sphinx</span></tt>) should be put in <tt class="docutils literal"><span class="pre">/usr/share/doc/tribus/</span></tt>.
+The maintainer should add a pattern like the following so that everything
+from <tt class="docutils literal"><span class="pre">tribus/data/docs/html</span></tt> gets copied to <tt class="docutils literal"><span class="pre">/usr/share/doc/tribus/</span></tt>
+when the package is installed (<tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">install</span></tt>) or a
+binary distribution is created (<tt class="docutils literal"><span class="pre">python</span> <span class="pre">setup.py</span> <span class="pre">bdist</span></tt>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> &#8211; the path where the files reside. Generally the top level
+directory of the project. Patterns will be expanded in
+this directory.</li>
+<li><strong>patterns</strong> &#8211; <p>this is a list of strings in the form of:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="s">&#39;relative/path/inside/project *.some.*regex* /dest&#39;</span><span class="p">,</span>
+ <span class="s">&#39;another/path/inside/project *.foo.*regex* /dest2&#39;</span><span class="p">,</span>
+ <span class="s">&#39;path/ *.* dest/&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>which means, <em>Put every file from this folder matching the regex
+inside this other folder</em>.</p>
+</li>
+<li><strong>exclude_files</strong> &#8211; this is a list of file patterns to exclude from the results.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a list of pairs <tt class="docutils literal"><span class="pre">('directory',</span> <span class="pre">[file-list])</span></tt> ready for use
+in <tt class="docutils literal"><span class="pre">setup(data_files=...)</span></tt> from Setuptools/Distutils.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">list</span></tt></p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span>New in version 0.1.</span></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="tribus.common.setup.utils.get_dependency_links">
+<tt class="descclassname">tribus.common.setup.utils.</tt><tt class="descname">get_dependency_links</tt><big>(</big><em>filename=None</em><big>)</big><a class="headerlink" href="#tribus.common.setup.utils.get_dependency_links" title="Permalink to this definition">¶</a></dt>
+<dd><p>Procesess dependency links from a requirements file
+or a simple pip dependency file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> &#8211; a filename containing python packages
+in a format expected by pip (one per line).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a list of dependency links.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">list</span></tt></td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span>New in version 0.1.</span></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="tribus.common.setup.utils.get_package_data">
+<tt class="descclassname">tribus.common.setup.utils.</tt><tt class="descname">get_package_data</tt><big>(</big><em>path=None</em>, <em>packages=None</em>, <em>data_files=None</em>, <em>exclude_packages=None</em>, <em>exclude_files=None</em><big>)</big><a class="headerlink" href="#tribus.common.setup.utils.get_package_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>For a list of packages, find the package_data</p>
+<p>This function scans the subdirectories of a package and considers all
+non-submodule subdirectories as resources, including them in
+the package_data</p>
+<p>Returns a dictionary suitable for setup(package_data=&lt;result&gt;)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="tribus.common.setup.utils.get_packages">
+<tt class="descclassname">tribus.common.setup.utils.</tt><tt class="descname">get_packages</tt><big>(</big><em>path=None</em>, <em>exclude_packages=None</em><big>)</big><a class="headerlink" href="#tribus.common.setup.utils.get_packages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of all python packages found within directory <tt class="docutils literal"><span class="pre">path</span></tt>, with
+<tt class="docutils literal"><span class="pre">exclude_packages</span></tt> packages excluded.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>path</strong> &#8211; the path where the packages will be searched. It should
+be supplied as a &#8220;cross-platform&#8221; (i.e. URL-style) path; it
+will be converted to the appropriate local path syntax.</li>
+<li><strong>exclude_packages</strong> &#8211; is a sequence of package names to exclude;
+<tt class="docutils literal"><span class="pre">*</span></tt> can be used as a wildcard in the names,
+such that <tt class="docutils literal"><span class="pre">foo.*</span></tt> will exclude all subpackages
+of <tt class="docutils literal"><span class="pre">foo</span></tt> (but not <tt class="docutils literal"><span class="pre">foo</span></tt> itself).</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a list of packages.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">list</span></tt></p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span>New in version 0.1.</span></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="tribus.common.setup.utils.get_requirements">
+<tt class="descclassname">tribus.common.setup.utils.</tt><tt class="descname">get_requirements</tt><big>(</big><em>filename=None</em><big>)</big><a class="headerlink" href="#tribus.common.setup.utils.get_requirements" title="Permalink to this definition">¶</a></dt>
+<dd><p>Procesess dependencies from a requirements file
+or a simple pip dependency file.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>filename</strong> &#8211; a filename containing python packages
+in a format expected by pip (one per line).</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a list of dependencies (python packages).</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">list</span></tt></td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span>New in version 0.1.</span></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="tribus.common.setup.utils.get_setup_data">
+<tt class="descclassname">tribus.common.setup.utils.</tt><tt class="descname">get_setup_data</tt><big>(</big><em>basedir</em><big>)</big><a class="headerlink" href="#tribus.common.setup.utils.get_setup_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>Prepares a dictionary of values to configure python Distutils.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>basedir</strong> &#8211; the path where the files reside. Generally the top level
+directory of the project.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a dic</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">dictionary</span></tt></td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span>New in version 0.1.</span></p>
+</div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="tribus_common_setup_message_extractors.html"
+                        title="previous chapter">tribus.common.setup.message_extractors</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tribus_common_utils.html"
+                        title="next chapter">tribus.common.utils</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/development/api/tribus_common_setup_utils.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="tribus_common_utils.html" title="tribus.common.utils"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="tribus_common_setup_message_extractors.html" title="tribus.common.setup.message_extractors"
+             >previous</a> |</li>
+        <li><a href="../../index.html">Tribus 0.1a1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Desarrolladores de Tribus.
+      Last updated on Dec 20, 2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

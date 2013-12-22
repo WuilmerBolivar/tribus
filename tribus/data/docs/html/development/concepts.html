@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Documentación conceptual &mdash; Tribus 0.1a1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1a1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Tribus 0.1a1 documentation" href="../index.html" />
+    <link rel="next" title="&lt;no title&gt;" href="drafts/documents.html" />
+    <link rel="prev" title="Instalación" href="../installation.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="drafts/documents.html" title="&lt;no title&gt;"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../installation.html" title="Instalación"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Tribus 0.1a1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="documentacion-conceptual">
+<h1>Documentación conceptual<a class="headerlink" href="#documentacion-conceptual" title="Permalink to this headline">¶</a></h1>
+<p>Tribus está desarrollado en Python, entre otras tecnologías modernas. Desde el punto de vista técnico, es un gestor de tareas de alta capacidad que ejecuta acciones según diversos criterios (por eventos, sincronización, etc). Las tareas son programadas por los usuarios de una instancia maestra a través de una interfaz web (Django). La instancia maestra puede tener instancias esclavas en diferentes dispositivos físicos de internet, las cuales pueden ejecutar las tareas de la instancia maestra según su disponibilidad. Por ejemplo, un usuario en casa puede levantar una instancia web y configurarla como esclava de la instancia mestra de Tribus, permititendo utilizar sus recursos en las diferentes tareas.</p>
+<a class="reference external image-reference" href="../_images/philosophy.svg"><div align="center" class="align-center"><img src="../_images/philosophy.svg" width="500px" /></div>
+</a>
+<p>Existen otras interfaces además de la interfaz web: la interfaz por consola (cli &#8211; command line interface) y la interfaz gráfica (gui &#8211; graphical user interface) contienen una serie de funciones que permiten interactuar con la instancia maestra o ejecutar tareas localmente.</p>
+<p>Las diferentes tareas dentro de Tribus son registradas según área de conocimiento (o &#8220;Tribu&#8221;), hasta ahora se han identificado las siguientes:</p>
+<ul class="simple">
+<li>Desarrollo</li>
+<li>Documentación</li>
+<li>Traducción</li>
+<li>Diseño gráfico</li>
+<li>Activismo social</li>
+</ul>
+<p>Más abajo tenemos un mapa mental que resume el diseño conceptual de la aplicación.</p>
+<a class="reference external image-reference" href="../_images/concept.svg"><div align="center" class="align-center"><img src="../_images/concept.svg" width="880px" /></div>
+</a>
+<p>Luego un mapa mental que describe las funcionalidades de Tribus que son parte del diseño final de la aplicación.</p>
+<a class="reference external image-reference" href="../_images/functional.svg"><div align="center" class="align-center"><img src="../_images/functional.svg" width="880px" /></div>
+</a>
+<p>A continuación se lista el diseño de los diferentes comandos y funcionalidades de Tribus. Si eres desarrollador de Tribus, deberías agregar un documento rst en la carpeta development/drafts que describa la nueva funcionalidad que estás agregando, si aplica.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="drafts/package_helper.html">tbs package create</a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../installation.html"
+                        title="previous chapter">Instalación</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="drafts/documents.html"
+                        title="next chapter">&lt;no title&gt;</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/development/concepts.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="drafts/documents.html" title="&lt;no title&gt;"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../installation.html" title="Instalación"
+             >previous</a> |</li>
+        <li><a href="../index.html">Tribus 0.1a1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Desarrolladores de Tribus.
+      Last updated on Dec 20, 2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

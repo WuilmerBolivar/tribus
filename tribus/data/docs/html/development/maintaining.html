@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Herramientas de mantenimiento y desarrollo &mdash; Tribus 0.1a1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1a1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Tribus 0.1a1 documentation" href="../index.html" />
+    <link rel="next" title="Normas de estilo para contribuciones" href="style.html" />
+    <link rel="prev" title="Protocolo para la incorporación de contribuciones" href="contributing.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="style.html" title="Normas de estilo para contribuciones"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="contributing.html" title="Protocolo para la incorporación de contribuciones"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Tribus 0.1a1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="herramientas-de-mantenimiento-y-desarrollo">
+<h1>Herramientas de mantenimiento y desarrollo<a class="headerlink" href="#herramientas-de-mantenimiento-y-desarrollo" title="Permalink to this headline">¶</a></h1>
+<p>Tribus necesita de una serie de herramientas, servicios y configuraciones iniciales para poder ejecutar las tareas rutinarias de desarrollo (p. ej. iniciar el servidor de desarrollo de <em>Django</em>, autenticar usuarios de prueba contra <em>OpenLDAP</em>, et. al.). Conforme el proceso de desarrollo va avanzando, las dependencias que necesita Tribus para funcionar van cambiando y necesitan ser corregidas de la forma más sencilla posible.</p>
+<p>Para facilitar esto, Tribus contiene una serie de comandos que asisten en las tareas de mantenimiento y desarrollo. Para ello, se utilizan una serie de scripts escritos en <a class="reference external" href="http://make.org/">Make</a> y <a class="reference external" href="http://fabfile.org">Fabric</a>.</p>
+<p>Se recomienda trabajar en un sistema Debian Sid, Debian Testing o en su defecto, Canaima 4.0 o Ubuntu 13.04.</p>
+<div class="section" id="recreando-el-ambiente-de-desarrollo">
+<span id="make-environment"></span><h2>Recreando el ambiente de desarrollo<a class="headerlink" href="#recreando-el-ambiente-de-desarrollo" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre>make environment</pre>
+</div>
+<p>Tribus utiliza <a class="reference external" href="http://virtualenv.org/">Virtualenv</a> para crear un entorno aislado de ejecución en Python. Esto permite que los accidentes e inestabilidades propias del proceso de desarrollo no afecten directamente el entorno de trabajo del desarrollador, mientras que a su vez, permite instalar las últimas versiones de paquetes python sin preocuparse de los problemas de dependencias del sistema huésped.</p>
+<p>Este comando además instalará los paquetes indispensables para el funcionamiento de los servicios (OpenLDAP, PostgreSQL, Redis, Celery, et. al.), entre otras tareas:</p>
+<ul>
+<li><p class="first">Instalar las dependencias de construcción listadas en <tt class="docutils literal"><span class="pre">tribus/config/data/debian-dependencies.list</span></tt>.</p>
+</li>
+<li><p class="first">Configurar el Servidor OpenLDAP con las siguientes características:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Domain: <tt class="docutils literal"><span class="pre">tribus.org</span></tt></li>
+<li>Base: <tt class="docutils literal"><span class="pre">dc=tribus,dc=org</span></tt></li>
+<li>Admin DN: <tt class="docutils literal"><span class="pre">cn=admin,dc=tribus,dc=org</span></tt></li>
+<li>Admin Password: <tt class="docutils literal"><span class="pre">tribus</span></tt></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Borrar todas las entradas de usuario del OpenLDAP.</p>
+</li>
+<li><p class="first">Agregar un usuario de pruebas <tt class="docutils literal"><span class="pre">uid=maria,dc=tribus,dc=org</span></tt> al OpenLDAP con contraseña <tt class="docutils literal"><span class="pre">123456</span></tt> (más detalles <tt class="docutils literal"><span class="pre">tribus/config/data/users.ldif</span></tt>)</p>
+</li>
+<li><p class="first">Agregar un usuario de pruebas <tt class="docutils literal"><span class="pre">uid=luis,dc=tribus,dc=org</span></tt> al OpenLDAP con contraseña <tt class="docutils literal"><span class="pre">654321</span></tt> (más detalles <tt class="docutils literal"><span class="pre">tribus/config/data/users.ldif</span></tt>)</p>
+</li>
+<li><p class="first">Cambiar la contraseña del servidor PostgreSQL a <tt class="docutils literal"><span class="pre">tribus</span></tt>.</p>
+</li>
+<li><p class="first">Crea una base de datos con nombre <tt class="docutils literal"><span class="pre">tribus</span></tt> (si ya existe una, la borra primero).</p>
+</li>
+<li><p class="first">Crea un usuario de nombre <tt class="docutils literal"><span class="pre">tribus</span></tt> con contraseña <tt class="docutils literal"><span class="pre">tribus</span></tt> y le concede todos los privilegios sobre la base de datos <tt class="docutils literal"><span class="pre">tribus</span></tt> (si ya existe uno, lo borra primero).</p>
+</li>
+<li><p class="first">Crea un virtualenv en una carpeta <tt class="docutils literal"><span class="pre">virtualenv/</span></tt> en el directorio raíz (no preocuparse por el versionamiento de esta carpeta porque ya está ignorada en el <tt class="docutils literal"><span class="pre">.gitignore</span></tt>).</p>
+</li>
+<li><p class="first">Activa el virtualenv y ejecuta las siguientes acciones:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Instala las dependencias python listadas en <tt class="docutils literal"><span class="pre">tribus/config/data/python-dependencies.list</span></tt> con <tt class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-r</span></tt>.</li>
+<li>Sincroniza la base de datos de Django (<tt class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">syncdb</span></tt>).</li>
+<li>Hace la migración inicial de las tablas con South (<tt class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">migrate</span></tt>).</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="iniciando-el-servidor-de-desarrollo">
+<h2>Iniciando el servidor de desarrollo<a class="headerlink" href="#iniciando-el-servidor-de-desarrollo" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre>make runserver</pre>
+</div>
+<p>Este comando es un atajo para hacer <tt class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">runserver</span></tt> dentro del virtualenv.</p>
+</div>
+<div class="section" id="sincronizando-la-base-de-datos">
+<h2>Sincronizando la base de datos<a class="headerlink" href="#sincronizando-la-base-de-datos" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre>make syncdb</pre>
+</div>
+<p>Este comando es un atajo para hacer <tt class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">runserver</span></tt> y <tt class="docutils literal"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">migrate</span></tt> dentro del virtualenv.</p>
+</div>
+<div class="section" id="compilando-las-fuentes">
+<h2>Compilando las fuentes<a class="headerlink" href="#compilando-las-fuentes" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre>make build</pre>
+</div>
+<p>Tribus está almacenado en el repositorio de código fuente en forma de código fuente. Es decir, procuramos que no existan archivos compilados sino los archivos fuentes. Por ejemplo, para las imágenes no almacenamos archivos PNG o JPG sino SVG, para la documentación no almacenamos archivos PDF o HTML sino RST o para las traducciones no almacenamos archivos MO sino PO. Pero Tribus no utiliza los archivos fuentes sino sus archivos compilados. Es por eso que para poder utilizar tribus en un ambiente de producción, o incluso para algunas pruebas, es necesario compilar las fuentes.</p>
+<p>Este comando es un comando que agrupa otro conjunto de comandos para cada tipo de archivo fuente.</p>
+<div class="highlight-python"><pre>make build_html</pre>
+</div>
+<p>Compila la documentación desde ReStructuredText a HTML utilizando <a class="reference external" href="http://sphinx.pocoo.org">Sphinx</a>.</p>
+<div class="highlight-python"><pre>make build_mo</pre>
+</div>
+<p>Compila los archivos de traducción desde .po a .mo utilizando <a class="reference external" href="http://babel.org">Babel</a>.</p>
+<div class="highlight-python"><pre>make build_man</pre>
+</div>
+<p>Compila archivos de ReStructuredText a archivos de manual leíbles con <tt class="docutils literal"><span class="pre">man</span></tt> utilizando <a class="reference external" href="http://docutils.org">Docutils</a>.</p>
+<div class="highlight-python"><pre>make build_img</pre>
+</div>
+<p>Compila archivos SVG a PNG utilizando <a class="reference external" href="http://cairosvg.org">CairoSVG</a>.</p>
+</div>
+<div class="section" id="limpiando-las-fuentes">
+<h2>Limpiando las fuentes<a class="headerlink" href="#limpiando-las-fuentes" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre>make clean</pre>
+</div>
+<p>Si deseamos limpiar las fuentes del producto de la compilación, por ejemplo, borrar todos los archivos PNG, MO, etc, entonces utilizamos <tt class="docutils literal"><span class="pre">make</span> <span class="pre">clean</span></tt>.</p>
+<p>Este comando es un comando que agrupa otro conjunto de comandos para cada tipo de archivo fuente.</p>
+<div class="highlight-python"><pre>make clean_html</pre>
+</div>
+<p>Borra la documentación generada con <tt class="docutils literal"><span class="pre">make</span> <span class="pre">build_html</span></tt>.</p>
+<div class="highlight-python"><pre>make clean_mo</pre>
+</div>
+<p>Borra los archivos MO generados con <tt class="docutils literal"><span class="pre">make</span> <span class="pre">build_mo</span></tt>.</p>
+<div class="highlight-python"><pre>make clean_img</pre>
+</div>
+<p>Borra los archivos PNG generados con <tt class="docutils literal"><span class="pre">make</span> <span class="pre">build_png</span></tt>.</p>
+<div class="highlight-python"><pre>make clean_man</pre>
+</div>
+<p>Borra los archivos de manual generados con <tt class="docutils literal"><span class="pre">make</span> <span class="pre">build_man</span></tt>.</p>
+<div class="highlight-python"><pre>make clean_pyc</pre>
+</div>
+<p>Borra los archivos precompilados de ejecución de python.</p>
+<div class="highlight-python"><pre>make clean_dist</pre>
+</div>
+<p>Borra los archivos generados por el proceso de empaquetado de python.</p>
+</div>
+<div class="section" id="generando-paquetes-python">
+<h2>Generando paquetes python<a class="headerlink" href="#generando-paquetes-python" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre>make sdist</pre>
+</div>
+<p>Crea un paquete fuente python.</p>
+<div class="highlight-python"><pre>make bdist</pre>
+</div>
+<p>Crea un paquete python instalable.</p>
+</div>
+<div class="section" id="instalando-en-el-sistema-huesped-desde-el-codigo-fuente">
+<h2>Instalando en el sistema huésped desde el código fuente<a class="headerlink" href="#instalando-en-el-sistema-huesped-desde-el-codigo-fuente" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre>make install</pre>
+</div>
+<p>Instala la aplicación en modo de producción, al estilo python.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Herramientas de mantenimiento y desarrollo</a><ul>
+<li><a class="reference internal" href="#recreando-el-ambiente-de-desarrollo">Recreando el ambiente de desarrollo</a></li>
+<li><a class="reference internal" href="#iniciando-el-servidor-de-desarrollo">Iniciando el servidor de desarrollo</a></li>
+<li><a class="reference internal" href="#sincronizando-la-base-de-datos">Sincronizando la base de datos</a></li>
+<li><a class="reference internal" href="#compilando-las-fuentes">Compilando las fuentes</a></li>
+<li><a class="reference internal" href="#limpiando-las-fuentes">Limpiando las fuentes</a></li>
+<li><a class="reference internal" href="#generando-paquetes-python">Generando paquetes python</a></li>
+<li><a class="reference internal" href="#instalando-en-el-sistema-huesped-desde-el-codigo-fuente">Instalando en el sistema huésped desde el código fuente</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="contributing.html"
+                        title="previous chapter">Protocolo para la incorporación de contribuciones</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="style.html"
+                        title="next chapter">Normas de estilo para contribuciones</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/development/maintaining.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="style.html" title="Normas de estilo para contribuciones"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="contributing.html" title="Protocolo para la incorporación de contribuciones"
+             >previous</a> |</li>
+        <li><a href="../index.html">Tribus 0.1a1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Desarrolladores de Tribus.
+      Last updated on Dec 20, 2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

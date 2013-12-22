@@ -1,0 +1,641 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>tribus.common.recorder &mdash; Tribus 0.1a1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1a1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="Tribus 0.1a1 documentation" href="../../index.html" />
+    <link rel="next" title="tribus.common.setup.message_extractors" href="tribus_common_setup_message_extractors.html" />
+    <link rel="prev" title="Lista de cambios en versiones previas" href="../changelog.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="tribus_common_setup_message_extractors.html" title="tribus.common.setup.message_extractors"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../changelog.html" title="Lista de cambios en versiones previas"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">Tribus 0.1a1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <span class="target" id="module-tribus.common.recorder"></span><div class="section" id="tribus-common-recorder">
+<h1>tribus.common.recorder<a class="headerlink" href="#tribus-common-recorder" title="Permalink to this headline">¶</a></h1>
+<p>This module contains common functions to record package data from a repository.</p>
+<dl class="function">
+<dt id="tribus.common.recorder.create_cache_dirs">
+<tt class="descclassname">tribus.common.recorder.</tt><tt class="descname">create_cache_dirs</tt><big>(</big><em>repository_root</em><big>)</big><a class="headerlink" href="#tribus.common.recorder.create_cache_dirs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates the packagecache and all other necessary directories to organize the
+debian control files (Packages) pulled from the repository.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>repository_root</strong> &#8211; url of the repository from which the Packages files will be pulled.</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span>New in version 0.1.</span></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="tribus.common.recorder.create_label">
+<tt class="descclassname">tribus.common.recorder.</tt><tt class="descname">create_label</tt><big>(</big><em>label_name</em>, <em>tag</em><big>)</big><a class="headerlink" href="#tribus.common.recorder.create_label" title="Permalink to this definition">¶</a></dt>
+<dd><p>Queries the database for an existent label.
+If it does not exists, it creates a new label.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>label_name</strong> &#8211; a string with the name of the label.</li>
+<li><strong>tag</strong> &#8211; a <tt class="xref py py-obj docutils literal"><span class="pre">Tag</span></tt> object.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a <tt class="xref py py-obj docutils literal"><span class="pre">Label</span></tt> object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Label</span></tt></p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span>New in version 0.1.</span></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="tribus.common.recorder.create_relationship">
+<tt class="descclassname">tribus.common.recorder.</tt><tt class="descname">create_relationship</tt><big>(</big><em>fields</em><big>)</big><a class="headerlink" href="#tribus.common.recorder.create_relationship" title="Permalink to this definition">¶</a></dt>
+<dd><p>Queries the database for an existent relation.
+If it does not exists, it creates a new relation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>fields</strong> &#8211; <p>is a dictionary which contains the relation data. Its structure is similar to:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;related_package&quot;</span><span class="p">:</span> <span class="s">&quot;0ad-data&quot;</span><span class="p">,</span> <span class="s">&quot;relation_type&quot;</span><span class="p">:</span> <span class="s">&quot;depends&quot;</span><span class="p">,</span>
+<span class="s">&quot;relation&quot;</span><span class="p">:</span> <span class="s">&quot;&gt;=&quot;</span><span class="p">,</span> <span class="s">&quot;version&quot;</span><span class="p">:</span> <span class="s">&quot;0~r11863&quot;</span><span class="p">,</span> <span class="s">&quot;alt_id&quot;</span><span class="p">:</span> <span class="bp">None</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a <tt class="xref py py-obj docutils literal"><span class="pre">Relation</span></tt> object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Relation</span></tt></td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span>New in version 0.1.</span></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="tribus.common.recorder.create_tag">
+<tt class="descclassname">tribus.common.recorder.</tt><tt class="descname">create_tag</tt><big>(</big><em>val</em><big>)</big><a class="headerlink" href="#tribus.common.recorder.create_tag" title="Permalink to this definition">¶</a></dt>
+<dd><p>Queries the database for an existent tag.
+If it does not exists, it creates a new tag.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>val</strong> &#8211; string with the value of the tag.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a <tt class="xref py py-obj docutils literal"><span class="pre">Tag</span></tt> object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Tag</span></tt></td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span>New in version 0.1.</span></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="tribus.common.recorder.fill_db_from_cache">
+<tt class="descclassname">tribus.common.recorder.</tt><tt class="descname">fill_db_from_cache</tt><big>(</big><big>)</big><a class="headerlink" href="#tribus.common.recorder.fill_db_from_cache" title="Permalink to this definition">¶</a></dt>
+<dd><p>Records the data from each Package file inside the packagecache folder into the database.</p>
+<div class="versionadded">
+<p><span>New in version 0.1.</span></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="tribus.common.recorder.find_package">
+<tt class="descclassname">tribus.common.recorder.</tt><tt class="descname">find_package</tt><big>(</big><em>name</em><big>)</big><a class="headerlink" href="#tribus.common.recorder.find_package" title="Permalink to this definition">¶</a></dt>
+<dd><p>Queries the database for an existent package.
+If it does not exists, it creates a new package only with its name.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>name</strong> &#8211; the package name.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a <tt class="xref py py-obj docutils literal"><span class="pre">Package</span></tt> object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Package</span></tt></td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span>New in version 0.1.</span></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="tribus.common.recorder.record_details">
+<tt class="descclassname">tribus.common.recorder.</tt><tt class="descname">record_details</tt><big>(</big><em>section</em>, <em>pq</em>, <em>dist</em><big>)</big><a class="headerlink" href="#tribus.common.recorder.record_details" title="Permalink to this definition">¶</a></dt>
+<dd><p>Queries the database for the details of a given package.
+If there are no details then they are recorded.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>section</strong> &#8211; paragraph which contains the package data.</li>
+<li><strong>pq</strong> &#8211; a <tt class="xref py py-obj docutils literal"><span class="pre">Package</span></tt> object to which the details are related.</li>
+<li><strong>dist</strong> &#8211; codename of the Canaima&#8217;s version that will be recorded.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a <tt class="xref py py-obj docutils literal"><span class="pre">Details</span></tt> object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Details</span></tt></p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span>New in version 0.1.</span></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="tribus.common.recorder.record_maintainer">
+<tt class="descclassname">tribus.common.recorder.</tt><tt class="descname">record_maintainer</tt><big>(</big><em>maintainer_data</em><big>)</big><a class="headerlink" href="#tribus.common.recorder.record_maintainer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Queries the database for an existent maintainer.
+If it does not exists, it creates a new maintainer.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>maintainer_data</strong> &#8211; a string which contains maintainer&#8217;s name and email.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a <tt class="xref py py-obj docutils literal"><span class="pre">Maintainer</span></tt> object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Maintainer</span></tt></td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span>New in version 0.1.</span></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="tribus.common.recorder.record_package">
+<tt class="descclassname">tribus.common.recorder.</tt><tt class="descname">record_package</tt><big>(</big><em>section</em><big>)</big><a class="headerlink" href="#tribus.common.recorder.record_package" title="Permalink to this definition">¶</a></dt>
+<dd><p>Queries the database for an existent package.
+If the package does exists but it doesn&#8217;t have
+a maintainer, then the package data will be 
+updated acording to the fields of the section provided.
+If the package doesn&#8217;t exists then it&#8217;s created.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>section</strong> &#8211; paragraph which contains the package data.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a <tt class="xref py py-obj docutils literal"><span class="pre">Package</span></tt> object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Package</span></tt></td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span>New in version 0.1.</span></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="tribus.common.recorder.record_relations">
+<tt class="descclassname">tribus.common.recorder.</tt><tt class="descname">record_relations</tt><big>(</big><em>details</em>, <em>relations_list</em><big>)</big><a class="headerlink" href="#tribus.common.recorder.record_relations" title="Permalink to this definition">¶</a></dt>
+<dd><p>Records a set of relations associated to a <tt class="xref py py-obj docutils literal"><span class="pre">Details</span></tt> object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>details</strong> &#8211; a <tt class="xref py py-obj docutils literal"><span class="pre">Details</span></tt> object to which each relationship is related.</li>
+<li><strong>relations_list</strong> &#8211; <p>a list of tuples containing package relations to another packages.  
+Its structure is similar to:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[(</span><span class="s">&#39;depends&#39;</span><span class="p">,</span> <span class="p">[[{</span><span class="s">&#39;arch&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">u&#39;libgl1-mesa-glx&#39;</span><span class="p">,</span> <span class="s">&#39;version&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">},</span>
+<span class="p">{</span><span class="s">&#39;arch&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">u&#39;libgl1&#39;</span><span class="p">,</span> <span class="s">&#39;version&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">}]],</span>
+<span class="p">[{</span><span class="s">&#39;arch&#39;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span> <span class="s">&#39;name&#39;</span><span class="p">:</span> <span class="s">u&#39;0ad-data&#39;</span><span class="p">,</span> <span class="s">&#39;version&#39;</span><span class="p">:</span> <span class="p">(</span><span class="s">u&#39;&gt;=&#39;</span><span class="p">,</span> <span class="s">u&#39;0~r11863&#39;</span><span class="p">)}]),</span> <span class="p">(</span><span class="s">&#39;suggests&#39;</span><span class="p">,</span> <span class="p">[])]</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span>New in version 0.1.</span></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="tribus.common.recorder.record_relationship">
+<tt class="descclassname">tribus.common.recorder.</tt><tt class="descname">record_relationship</tt><big>(</big><em>dt</em>, <em>rtype</em>, <em>fields</em>, <em>alt_id=None</em><big>)</big><a class="headerlink" href="#tribus.common.recorder.record_relationship" title="Permalink to this definition">¶</a></dt>
+<dd><p>Records a new relation in the database and then associates it to a <tt class="xref py py-obj docutils literal"><span class="pre">Details</span></tt> object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>dt</strong> &#8211; a <tt class="xref py py-obj docutils literal"><span class="pre">Details</span></tt> object to which the relationship is related.</li>
+<li><strong>rtype</strong> &#8211; a string indicating the relationship type.</li>
+<li><strong>fields</strong> &#8211; <p>a dictionary which contains the relation data. Its structure is similar to:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span><span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;0ad-data&quot;</span><span class="p">,</span> <span class="s">&quot;version&quot;</span><span class="p">:</span> <span class="p">(</span><span class="s">&quot;&gt;=&quot;</span><span class="p">,</span> <span class="s">&quot;0~r11863&quot;</span><span class="p">),</span> <span class="s">&quot;arch&quot;</span><span class="p">:</span> <span class="bp">None</span><span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><strong>alt_id</strong> &#8211; <p>an integer used to relate a relation with its alternatives, e.g:</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="6%" />
+<col width="27%" />
+<col width="23%" />
+<col width="17%" />
+<col width="14%" />
+<col width="13%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">id</th>
+<th class="head">related_package</th>
+<th class="head">relation_type</th>
+<th class="head">relation</th>
+<th class="head">version</th>
+<th class="head">alt_id</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>23</td>
+<td>depends</td>
+<td>&lt;=</td>
+<td>0.98</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>24</td>
+<td>depends</td>
+<td>&gt;=</td>
+<td>0.64</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>25</td>
+<td>depends</td>
+<td>&gt;=</td>
+<td>2.76</td>
+<td>1</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>26</td>
+<td>depends</td>
+<td>&nbsp;</td>
+<td>&nbsp;</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>27</td>
+<td>depends</td>
+<td>&lt;&lt;</td>
+<td>2.14</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<p>in the above table, the relations with id 2, 3 and 4 are alternatives between 
+themselves because they have the same value in the field <tt class="xref py py-obj docutils literal"><span class="pre">alt_id</span></tt>.</p>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span>New in version 0.1.</span></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="tribus.common.recorder.record_section">
+<tt class="descclassname">tribus.common.recorder.</tt><tt class="descname">record_section</tt><big>(</big><em>section</em>, <em>dist</em><big>)</big><a class="headerlink" href="#tribus.common.recorder.record_section" title="Permalink to this definition">¶</a></dt>
+<dd><p>Records the content of a paragraph in the database.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>section</strong> &#8211; a paragraph which contains the package data.</li>
+<li><strong>dist</strong> &#8211; codename of the Canaima&#8217;s version that will be recorded.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span>New in version 0.1.</span></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="tribus.common.recorder.record_tags">
+<tt class="descclassname">tribus.common.recorder.</tt><tt class="descname">record_tags</tt><big>(</big><em>section</em>, <em>pq</em><big>)</big><a class="headerlink" href="#tribus.common.recorder.record_tags" title="Permalink to this definition">¶</a></dt>
+<dd><p>Processes the contents of the &#8216;Tag&#8217; field in the provided paragraph,
+records the labels into the database and relates them to a package.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>section</strong> &#8211; a paragraph which contains the package data.</li>
+<li><strong>pq</strong> &#8211; a <tt class="xref py py-obj docutils literal"><span class="pre">Package</span></tt> object to which the labels are related.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span>New in version 0.1.</span></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="tribus.common.recorder.select_paragraph_fields">
+<tt class="descclassname">tribus.common.recorder.</tt><tt class="descname">select_paragraph_fields</tt><big>(</big><em>section</em>, <em>fields</em><big>)</big><a class="headerlink" href="#tribus.common.recorder.select_paragraph_fields" title="Permalink to this definition">¶</a></dt>
+<dd><p>Selects the necessary fields to record a debian control file paragraph
+in the database. Hyphens in field&#8217;s names are suppressed, e.g:  
+&#8220;Multi-Arch&#8221; is replaced by &#8220;MultiArch&#8221;.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>section</strong> &#8211; is a paragraph which contains data from a binary package.</li>
+<li><strong>fields</strong> &#8211; <p>is a list of the necessary fields to record a Package or a Details object in the 
+database. For a <tt class="xref py py-obj docutils literal"><span class="pre">Package</span></tt> object, the necessary fields are:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="s">&quot;Package&quot;</span><span class="p">,</span> <span class="s">&quot;Description&quot;</span><span class="p">,</span> <span class="s">&quot;Homepage&quot;</span><span class="p">,</span> <span class="s">&quot;Section&quot;</span><span class="p">,</span>
+ <span class="s">&quot;Priority&quot;</span><span class="p">,</span> <span class="s">&quot;Essential&quot;</span><span class="p">,</span> <span class="s">&quot;Bugs&quot;</span><span class="p">,</span> <span class="s">&quot;Multi-Arch&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>and for a <tt class="xref py py-obj docutils literal"><span class="pre">Details</span></tt> object:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span><span class="s">&quot;Version&quot;</span><span class="p">,</span> <span class="s">&quot;Architecture&quot;</span><span class="p">,</span> <span class="s">&quot;Size&quot;</span><span class="p">,</span> <span class="s">&quot;MD5sum&quot;</span><span class="p">,</span> <span class="s">&quot;Filename&quot;</span><span class="p">,</span>
+ <span class="s">&quot;Installed-Size&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a dictionary with the selected fields.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">dict</span></tt></p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span>New in version 0.1.</span></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="tribus.common.recorder.update_details">
+<tt class="descclassname">tribus.common.recorder.</tt><tt class="descname">update_details</tt><big>(</big><em>pq</em>, <em>section</em>, <em>dist</em><big>)</big><a class="headerlink" href="#tribus.common.recorder.update_details" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the details of a Package in the database.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>pq</strong> &#8211; a <tt class="xref py py-obj docutils literal"><span class="pre">Package</span></tt> object to which the details are related.</li>
+<li><strong>section</strong> &#8211; a paragraph which contains the package data.</li>
+<li><strong>dist</strong> &#8211; codename of the Canaima&#8217;s version that will be updated.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a <tt class="xref py py-obj docutils literal"><span class="pre">Details</span></tt> object.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><tt class="docutils literal"><span class="pre">Details</span></tt></p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span>New in version 0.1.</span></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="tribus.common.recorder.update_dist_paragraphs">
+<tt class="descclassname">tribus.common.recorder.</tt><tt class="descname">update_dist_paragraphs</tt><big>(</big><em>repository_root</em>, <em>dist</em><big>)</big><a class="headerlink" href="#tribus.common.recorder.update_dist_paragraphs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates a debian control file (Packages),
+comparing the the one in the repository with its local copy.
+If there are differences in the MD5sum field then the local
+copy is deleted and copied again from the repository.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>repository_root</strong> &#8211; url of the repository from which the Packages files will be updated.</li>
+<li><strong>dist</strong> &#8211; codename of the Canaima&#8217;s version that will be updated.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span>New in version 0.1.</span></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="tribus.common.recorder.update_package">
+<tt class="descclassname">tribus.common.recorder.</tt><tt class="descname">update_package</tt><big>(</big><em>section</em><big>)</big><a class="headerlink" href="#tribus.common.recorder.update_package" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the basic data of a package in the database.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>section</strong> &#8211; a paragraph which contains the package data.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">a <tt class="xref py py-obj docutils literal"><span class="pre">Package</span></tt> object.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><tt class="docutils literal"><span class="pre">Package</span></tt></td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span>New in version 0.1.</span></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="tribus.common.recorder.update_package_cache">
+<tt class="descclassname">tribus.common.recorder.</tt><tt class="descname">update_package_cache</tt><big>(</big><big>)</big><a class="headerlink" href="#tribus.common.recorder.update_package_cache" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scans the packagecache directory to get the existent 
+distributions and update them.
+It is assumed that the packagecache directory was created previously.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="tribus.common.recorder.update_package_list">
+<tt class="descclassname">tribus.common.recorder.</tt><tt class="descname">update_package_list</tt><big>(</big><em>file_path</em>, <em>dist</em><big>)</big><a class="headerlink" href="#tribus.common.recorder.update_package_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates all packages from a debian control file.
+If a package exists but the MD5sum field is different from the one
+stored in the database then it updates the package data fields.
+If the package doesn&#8217;t exists then its created.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>file_path</strong> &#8211; path to the debian control file.</li>
+<li><strong>dist</strong> &#8211; codename of the Canaima&#8217;s version that will be updated.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span>New in version 0.1.</span></p>
+</div>
+</dd></dl>
+
+<dl class="function">
+<dt id="tribus.common.recorder.update_section">
+<tt class="descclassname">tribus.common.recorder.</tt><tt class="descname">update_section</tt><big>(</big><em>section</em>, <em>dist</em><big>)</big><a class="headerlink" href="#tribus.common.recorder.update_section" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates basic data and details of a package in the database.
+It also updates the package&#8217;s relations.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>section</strong> &#8211; a paragraph which contains the package data.</li>
+<li><strong>dist</strong> &#8211; codename of the Canaima&#8217;s version that will be updated.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span>New in version 0.1.</span></p>
+</div>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../changelog.html"
+                        title="previous chapter">Lista de cambios en versiones previas</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tribus_common_setup_message_extractors.html"
+                        title="next chapter">tribus.common.setup.message_extractors</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/development/api/tribus_common_recorder.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="tribus_common_setup_message_extractors.html" title="tribus.common.setup.message_extractors"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../changelog.html" title="Lista de cambios en versiones previas"
+             >previous</a> |</li>
+        <li><a href="../../index.html">Tribus 0.1a1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Desarrolladores de Tribus.
+      Last updated on Dec 20, 2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

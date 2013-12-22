@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Normas de estilo para contribuciones &mdash; Tribus 0.1a1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1a1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Tribus 0.1a1 documentation" href="../index.html" />
+    <link rel="next" title="Proyectos que han servido o servirán de inspiración" href="reusable.html" />
+    <link rel="prev" title="Herramientas de mantenimiento y desarrollo" href="maintaining.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="reusable.html" title="Proyectos que han servido o servirán de inspiración"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="maintaining.html" title="Herramientas de mantenimiento y desarrollo"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Tribus 0.1a1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="normas-de-estilo-para-contribuciones">
+<h1>Normas de estilo para contribuciones<a class="headerlink" href="#normas-de-estilo-para-contribuciones" title="Permalink to this headline">¶</a></h1>
+<p>Tribus hace un esfuerzo por seguir el estándar <a class="reference external" href="http://www.python.org/dev/peps/pep-0008/">PEP8</a>, especialmente en los siguientes puntos:</p>
+<ul>
+<li><p class="first">Mantener el largo de las líneas por debajo de 80 caracteres, tanto para el código como para la documentación.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Se aceptan excepciones cuando se hace imposible cortar la línea sin romper la funcionalidad o cuando se hace necesario reescribir código sólamente para cumplir con esta regla.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">La sangría debe ser de 4 espacios. Nada de 8 espacios, 2 espacios, 3 espacios o tabulaciones.</p>
+</li>
+<li><p class="first">Nombres de clases en estilo <tt class="docutils literal"><span class="pre">CamelCase</span></tt> y <tt class="docutils literal"><span class="pre">minúsculas_separadas_por_guiones_bajos</span></tt> para métodos, funciones, atributos y todo lo demás.</p>
+</li>
+</ul>
+<p>Por otro lado, se hacen otras sugerencias específicas:</p>
+<ul class="simple">
+<li>En cualquier uso de parámetros, debe especificarse el nombre del mismo en conjunto con su valor. Por ejemplo, esto está bien: <tt class="docutils literal"><span class="pre">self.funcion(parametro_1='Valor</span> <span class="pre">1',</span> <span class="pre">parametro_2='Valor</span> <span class="pre">2')</span></tt> y esto está mal <tt class="docutils literal"><span class="pre">self.funcion('Valor</span> <span class="pre">1',</span> <span class="pre">'Valor</span> <span class="pre">2')</span></tt>.</li>
+<li>Se prefiere nombre de clases, funciones, atributos y métodos en inglés.</li>
+<li>Toda función o clase debe estar documentada de la forma en que autodoc de Sphinx la interpreta. La documentación debe estar en inglés.</li>
+<li>Toda configuración debe ser incluída dentro del paquete tribus.config y referenciada desde donde se necesita.</li>
+<li>Toda función o clase de bajo nivel, o constructora de otras funciones más complejas debe ser incluída dentro del paquete tribus.common y referenciada desde donde se necesita.</li>
+<li>Toda ilustración o imagen a incluir dentro de Tribus debe estar en formato SVG. Si usted desea incluir un archivo de imagen png o jpg que no puede ser vectorizado limpiamente, incrustelo primero en un svg.</li>
+<li>Si está haciendo una vista para tribus.web, no escriba elementos css nuevos sin antes revisar si existe algún elemento con las características que usted necesita.</li>
+<li>Se prefiere el uso de comillas simples para declarar cadenas de texto.</li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="maintaining.html"
+                        title="previous chapter">Herramientas de mantenimiento y desarrollo</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="reusable.html"
+                        title="next chapter">Proyectos que han servido o servirán de inspiración</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/development/style.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="reusable.html" title="Proyectos que han servido o servirán de inspiración"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="maintaining.html" title="Herramientas de mantenimiento y desarrollo"
+             >previous</a> |</li>
+        <li><a href="../index.html">Tribus 0.1a1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Desarrolladores de Tribus.
+      Last updated on Dec 20, 2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

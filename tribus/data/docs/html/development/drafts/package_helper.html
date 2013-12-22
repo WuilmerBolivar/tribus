@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>tbs package create &mdash; Tribus 0.1a1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.1a1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="top" title="Tribus 0.1a1 documentation" href="../../index.html" />
+    <link rel="up" title="Documentación conceptual" href="../concepts.html" />
+    <link rel="next" title="&lt;no title&gt;" href="structure.html" />
+    <link rel="prev" title="&lt;no title&gt;" href="package_app.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="structure.html" title="&lt;no title&gt;"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="package_app.html" title="&lt;no title&gt;"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">Tribus 0.1a1 documentation</a> &raquo;</li>
+          <li><a href="../concepts.html" accesskey="U">Documentación conceptual</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="tbs-package-create">
+<h1>tbs package create<a class="headerlink" href="#tbs-package-create" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="comportamiento-automatico">
+<h2>Comportamiento automático<a class="headerlink" href="#comportamiento-automatico" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Identificar el tipo de sistema de versionamiento (git, subversion, bazaar, mercurial, ninguno).</p>
+</li>
+<li><p class="first">Identificar el tipo de paquete fuente (nativo, quilt, etc).</p>
+</li>
+<li><p class="first">Desaplicar todos los parches.</p>
+</li>
+<li><p class="first">Verificar si existen nuevos cambios no versionados.</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Si existen cambios sólamente dentro de la carpeta debian/, entonces tenemos una revisión nueva.</p>
+</li>
+<li><p class="first">Si existen cambios sólamente fuera de la carpeta debian/, entonces:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Tenemos un nuevo import desde upstream, por lo tanto tenemos una versión nueva.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Debe existir una etiqueta para el import desde upstream.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">El mantenedor se equivocó e hizo cambios directamente sobre el código fuente del software.</p>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Si existen cambios en la carpeta debian/ y fuera de ella, entonces:</p>
+<blockquote>
+<div><ul class="simple">
+<li>El mantenedor se equivocó e hizo cambios directamente sobre el código fuente del software y además hizo cambios en la carpeta debian/.</li>
+<li>El mantenedor importó una nueva versión desde upstream pero olvidó hacer commit e hizo cambios en la carpeta debian seguidamente.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Si no existen cambios, estamos haciendo un reempaquetamiento de una versión previa.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Debe existir una etiqueta para la versión empaquetada.</li>
+<li>La versión es la misma, no debe haber ningún cambio en el paquete (empaquetamiento no-intrusivo).</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Identificar el tipo de empaquetado (&#8211;test, &#8211;final).</p>
+</li>
+<li><p class="first">Relacionar la versión anterior con un commit (a través de la etiqueta).</p>
+</li>
+<li><p class="first">Recolectar todos los commits realizados hasta la fecha.</p>
+</li>
+<li><p class="first">Crear la nueva entrada de Changelog.</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Insertar todos los mensajes de commit desde la última versión.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Si no tenemos sistema de versionamiento, dejar el editor abierto para introducir manualmente los mensajes de changelog.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Determinar la nueva versión, prioridad y distribución destino.</p>
+</li>
+<li><p class="first">Determinar autor y correo correctos del paquete.</p>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Recrear el paquete fuente en el formato correcto.</p>
+</li>
+<li><p class="first">Empaquetar.</p>
+</li>
+<li><p class="first">Firmar fuentes si tenemos llave gpg.</p>
+</li>
+<li><p class="first">Hacer etiqueta si era un empaquetado &#8211;final.</p>
+</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">tbs package create</a><ul>
+<li><a class="reference internal" href="#comportamiento-automatico">Comportamiento automático</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="package_app.html"
+                        title="previous chapter">&lt;no title&gt;</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="structure.html"
+                        title="next chapter">&lt;no title&gt;</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../_sources/development/drafts/package_helper.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="structure.html" title="&lt;no title&gt;"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="package_app.html" title="&lt;no title&gt;"
+             >previous</a> |</li>
+        <li><a href="../../index.html">Tribus 0.1a1 documentation</a> &raquo;</li>
+          <li><a href="../concepts.html" >Documentación conceptual</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Desarrolladores de Tribus.
+      Last updated on Dec 20, 2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>

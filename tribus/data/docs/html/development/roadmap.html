@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Hojas de ruta para próximas versiones &mdash; Tribus 0.1a1 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.1a1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Tribus 0.1a1 documentation" href="../index.html" />
+    <link rel="next" title="Lista de cambios en versiones previas" href="changelog.html" />
+    <link rel="prev" title="Proyectos que han servido o servirán de inspiración" href="reusable.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="changelog.html" title="Lista de cambios en versiones previas"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="reusable.html" title="Proyectos que han servido o servirán de inspiración"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Tribus 0.1a1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="hojas-de-ruta-para-proximas-versiones">
+<h1>Hojas de ruta para próximas versiones<a class="headerlink" href="#hojas-de-ruta-para-proximas-versiones" title="Permalink to this headline">¶</a></h1>
+<p>Esta es la planificación del desarrollo de Tribus. Cada hoja de ruta para una versión específica contiene una lista de las funcionalidades necesarias para completar el desarrollo de la versión. Cada funcionalidad tiene un ticket asignado en el sistema de gestión de tickets y un <em>Documento de Especificaciones</em>, el cuál describe en detalle en qué consiste la funcionalidad. Si deseas ayudar con algo, revisa los tickets e informa que estás trabajando en una funcionalidad a través de los comentarios.</p>
+<p>La lista de &#8220;por hacer&#8221; (TODO) muestra una lista de tareas aleatorias que los desarrolladores han ido anotando sin ningún orden en particular. Esta es una lista de deseos o &#8220;wishlist&#8221; que debe ser ubicada en una de las próximas hojas de ruta por uno de los mantenedores de Tribus.</p>
+<div class="section" id="lista-de-por-hacer">
+<h2>Lista de &#8220;por hacer&#8221;<a class="headerlink" href="#lista-de-por-hacer" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python"><pre>* [] Issues:
+        * [] #12 - Ocultar Correo electrónico en Perfil.
+        * [] #13 - Incorporar un Indice Alfabetico.
+        * [] #15 - Descripción de paquetes y comentarios.
+        * [] #16 - Se muestran variables.
+        * [] #17 - Palabras no traducidas en el correo.
+        * [] #18 - Target="_blank" en el footer.
+        * [] #20 - Barra al final del enlace.
+        * [] #22 - Hacer un sprite para los svg's de la portada.
+        * [] #23 - Agregar opensearch.
+        * [] #24 - Leer tickets en Github a través de la API y ponerlos en la doc.
+        * [] #25 - Hacer una rutina para limpiar SVG's con scour (optimize_svg).
+        * [] #26 - Realizar pruebas unitarias.
+        * [] #27 - Separar los templates de los elementos de AngularJS ui-bootstrap.
+        * [] #28 - Arreglar acceso al panel de administración.
+        * [] #29 - Traducir Tribus.
+        * [] #35 - Utilizar plataforma de integración continua.
+        * [] #37 - Mejorar formulario de busqueda.
+* [] Documentación:
+		* [] Documentación de tickets y funciones.
+        * [] Documentar clases y funciones. 
+        * [] Completar la documentacion para desarrolladores.
+        * [] i18n para la documentación automatizar el ciclo de compilación para cada idioma.
+        * [] Documentar la función de cada uno de los paquetes de tribus en su __init__.py para que sea recogido por Sphinx.
+        * [] Incluir cada uno de los módulos de los paquetes de tribus dentro de la documentación de la API (development/api).
+* [] Diseño:
+        * [] Hacer banners publicitarios.
+        * [] Separar los CSS por componentes.
+        * [] Mejorar UI de índice de paquetes.
+        * [] Mejorar ciclo de renderizado de css y js.
+        * [] Terminar Estilo visual de Application cloud.
+* [] Funciones redes sociales:
+        * [] Arreglar login por otros servicios.
+        * [] Permitir publicar un trib en twitter y facebook.
+        * [] Agregar búsqueda de amigos en otras redes que estén en Tribus (gmail, twitter, facebook, github).
+        * [] Hace pipeline para pedir información adicional para usuarios que se conectan a través de redes sociales.
+* [] Por agregar:
+        * [] Agregar mentions.
+        * [] Agregar hashtags.
+        * [] Agregar like y dislike.
+        * [] Agregar mensajes privados/chat.
+        * [] Agregar pruebas de calidad de código con PEP8, PyLint y Tox.
+        * [] Agregar una página de resultados a la aplicación de paquetería.
+        * [] Agregar tab de seguidores y seguidos cuando se ve el perfil de otra persona.
+        * [] Agregar permalinks a los tribs y comentarios. Hacer una vista para cada trib.
+        * [] Agregar funcionalidad para subir imagen de usuario. 
+        * [] Agregar un dialogo (modal) que permita escoger entre gravatar y una imagen personalizada.
+* [] Búsqueda:
+        * [] Poder subir y bajar con el teclado.
+        * [] Utilizar el plugin typeahead de angular.
+        * [] Si se hace click en otra parte de la página, debe desaparecer.
+        * [] Alargar el delay entre el keypress y la ejecución de la búsqueda.
+* [] Otros:
+        * [] Implementar caché.
+        * [] Hacer funciones para producción.
+        * [] Cambiar el User Model (ESTUDIAR).
+        * [] Hacer un CDN para los recursos multimedia.
+        * [] Sincronizar la hora local con el servidor.
+        * [] Hacer el esquema de versionamiento y release.
+        * [] Relacionar Tribs y Comentarios con sus autores.
+        * [] Que la descripción cargue la descripción anterior.
+        * [] Eliminar duplicación de datos en los Documentos de Mongo. 
+        * [] Hacer que se reutilice el virtualenv en vez de regenerarlo.
+        * [] Colocar número de seguidores, seguidos y tribs en el perfil.
+        * [] Permitir cambiar nombre de usuario, nombres, apellidos y correo.
+        * [] Diseñar una forma de migrar la base de datos entre versiones de Tribus.
+        * [] Separar las dependencias de construcción de las dependencias de operación.
+        * [] Hacer validación de formularios del lado del cliente con angularjs y verificar las del lado del servidor.
+
+
+Realizados:
+* [HECHO] Cambiar el sistema de configuración de setuptools. El proceso de generación de la lista de archivos se ejecuta siempre que se llama al setup.py.
+* [HECHO] Buscar el origen de tribus/common/setup/message_extractors.py y colocarlo en COPYING.
+* [HECHO] MongoDB, Tastypie, AngularJS, Tribs
+* [HECHO] Infinite scroll + limitTo + angular.js.
+* [HECHO] Better API URls, better pagination.
+* [HECHO] Usar Django-registration.
+* [HECHO] Hacer bienvenida para los usuarios nuevos.
+* [HECHO] Mejorar estilo del menú de búsqueda.
+* [HECHO] Hacer about/
+* [HECHO] Revisar sistema de comentarios.
+* [HECHO] Agregar botón de application cloud en el dashboard.
+* [HECHO] Migrar de jQuery a AngularJS.
+* [HECHO] Revisar API.
+* [HECHO] Revisar CSS responsive.
+* [HECHO] Agregar "sponsors".
+</pre>
+</div>
+</div>
+<div class="section" id="tribus-0-1">
+<h2>Tribus 0.1<a class="headerlink" href="#tribus-0-1" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/canaimagnulinux/tribus/issues/1">Ticket</a>: Estructura inicial del proyecto (<a class="reference internal" href="drafts/structure.html"><em>Documento de Especificaciones</em></a>).</li>
+<li><a class="reference external" href="http://github.com/canaimagnulinux/tribus/issues/2">Ticket</a>: Documentación inicial de procesos y diseño de la aplicación (<a class="reference internal" href="drafts/documents.html"><em>Documento de Especificaciones</em></a>).</li>
+<li><a class="reference external" href="http://github.com/canaimagnulinux/tribus/issues/3">Ticket</a>: Creación del sistema de mantenimiento de la aplicación (<a class="reference internal" href="drafts/maint_system.html"><em>Documento de Especificaciones</em></a>).</li>
+<li><a class="reference external" href="http://github.com/canaimagnulinux/tribus/issues/4">Ticket</a>: Sistema de lectura(autenticación), escritura y manipulación de datos de usuario con OpenLDAP y Django (<a class="reference internal" href="drafts/user_app.html"><em>Documento de Especificaciones</em></a>).</li>
+<li><a class="reference external" href="http://github.com/canaimagnulinux/tribus/issues/5">Ticket</a>: Sistema de registro y consulta de paquetes (<a class="reference internal" href="drafts/package_app.html"><em>Documento de Especificaciones</em></a>).</li>
+<li><a class="reference external" href="http://github.com/canaimagnulinux/tribus/issues/6">Ticket</a>: Sistema para la publicación de mensajes cortos (Trib) (<a class="reference internal" href="drafts/trib.html"><em>Documento de Especificaciones</em></a>).</li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Hojas de ruta para próximas versiones</a><ul>
+<li><a class="reference internal" href="#lista-de-por-hacer">Lista de &#8220;por hacer&#8221;</a></li>
+<li><a class="reference internal" href="#tribus-0-1">Tribus 0.1</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="reusable.html"
+                        title="previous chapter">Proyectos que han servido o servirán de inspiración</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="changelog.html"
+                        title="next chapter">Lista de cambios en versiones previas</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/development/roadmap.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="changelog.html" title="Lista de cambios en versiones previas"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="reusable.html" title="Proyectos que han servido o servirán de inspiración"
+             >previous</a> |</li>
+        <li><a href="../index.html">Tribus 0.1a1 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2013, Desarrolladores de Tribus.
+      Last updated on Dec 20, 2013.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.2b3.
+    </div>
+  </body>
+</html>
