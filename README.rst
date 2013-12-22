@@ -28,3 +28,8 @@ El reconocimiento sirve para establecer una metrica relativa de la cantidad de c
 La plataforma permite realizar diferentes actividades para facilitar el desenvolvimiento de proyectos de software libre en las áreas de diseño gráfico, documentación, traducción, desarrollo y activismo social, a través de las cuales se valoran las diferentes tareas que caracterizan la experiencia y conocimiento. Cada una de estas actividades ha sido desglosada en procesos con el objetivo de establecer una automatización a gran escala, permitiendo intervención humana en los niveles estrictamente necesarios.
 
 Para mayor información, consulte la documentación en ``tribus/data/docs/html`` (primero debe hacer ``make build_sphinx`` para construirla).
+
+Branch: Documentacion
+---------------
+
+Esta rama es creada para trabajar con la documentación de Tribus.
