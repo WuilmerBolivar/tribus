@@ -1,16 +1,19 @@
+Branch: Documentación
+---------------
+
+Esta rama es creada para trabajar con la documentación de Tribus.
+Si desea puede colaborar realizando sus preguntas para que estas sean incluidas en la documentación, el proceso para hacerlo es el siguiente:
+
+	1) Entre al siguiente enlace: 
+		https://github.com/WuilmerBolivar/tribus/issues
+	2) Clic al botón: "New issue".
+		https://github.com/WuilmerBolivar/tribus/issues/new
+	3) Escriba su pregunta en el "Title"
+	4) Agregue un comentario sobre la pregunta realizada.
+	5) Clic al botón: "Submit new issue" para enviar su pregunta.
+
 Tribus
 ======
-
-.. image:: https://travis-ci.org/CanaimaGNULinux/tribus.png?branch=development
-   :target: https://travis-ci.org/CanaimaGNULinux/tribus
-   :alt: Travis CI builds
-
-.. image:: https://coveralls.io/repos/CanaimaGNULinux/tribus/badge.png?branch=development
-   :target: https://coveralls.io/r/CanaimaGNULinux/tribus
-   :alt: Coverage
-
-.. image:: https://badge.fury.io/py/Tribus.png
-   :target: http://badge.fury.io/py/Tribus
 
 *Tribus* es una **red social** para la gestión de comunidades de software libre. Su objetivo es simplificar las tediosas y repetitivas tareas de mantenimiento, mientras pone a disposición de sus miembros **las mejores herramientas** que le permitirán **expresar su creatividad** y **desarrollar el máximo potencial de sus capacidades**.
 
@@ -29,7 +32,3 @@ La plataforma permite realizar diferentes actividades para facilitar el desenvol
 
 Para mayor información, consulte la documentación en ``tribus/data/docs/html`` (primero debe hacer ``make build_sphinx`` para construirla).
 
-Branch: Documentacion
----------------
-
-Esta rama es creada para trabajar con la documentación de Tribus.
